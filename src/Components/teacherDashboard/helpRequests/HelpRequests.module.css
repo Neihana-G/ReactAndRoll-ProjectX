@@ -26,11 +26,23 @@
 .helpMainContent h3 {
     color: #6c6c6c;
     font-size: 24px;
+    padding: 0 50px;
 }
-.helpMainContent button {
+.actionButtons {
+    text-align: right;
+}
+.actionButtons button {
     font-family: "Nunito", sans-serif;
     background: none;
     border: none;
     font-size: 18px;
+    margin: 0 0px 0 40px;
     color: #6c6c6c;
+}
+.actionButtons button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.notificationWrapper {
+    width: 90%;
 }

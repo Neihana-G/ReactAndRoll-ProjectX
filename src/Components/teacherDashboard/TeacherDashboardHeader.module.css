@@ -26,8 +26,15 @@
     color: white;
     background-color: #f91c85;
 }
+.buttonWrapper button:hover {
+    cursor: pointer;
+    background-color: #e8137a;
+}
 .buttonBlueColour {
     background-color: #43c0f6 !important;
+}
+.buttonBlueColour:hover {
+    background-color: #31ace1 !important;
 }
 .flagImages {
     height: 100%;
