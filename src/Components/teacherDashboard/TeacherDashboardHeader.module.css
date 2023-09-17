@@ -1,0 +1,42 @@
+.header {
+    width: 100%;
+    height: 7vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.header img {
+    max-height: 100%;
+    margin-right: auto;
+    padding: 50px;
+}
+.buttonWrapper {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+}
+.buttonWrapper button {
+    height: 35px;
+    width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #f91c85;
+}
+.buttonBlueColour {
+    background-color: #43c0f6 !important;
+}
+.flagImages {
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 50px;
+}
+.flagImages img {
+    height: 12px;
+    margin: 0 10px;
+    padding: 0;
+}
