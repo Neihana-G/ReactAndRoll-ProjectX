@@ -1,0 +1,25 @@
+.main_footer {
+  background-color: #b2e4fa;
+  color: #707070;
+  display: flex;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 350px;
+}
+
+.Company {
+  margin-top: 70px;
+}
+
+.Courses {
+  margin-top: 70px;
+}
+
+.Support {
+  margin-top: 70px;
+}
+
+.Legal {
+  margin-top: 70px;
+}
