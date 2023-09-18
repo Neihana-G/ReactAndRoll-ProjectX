@@ -1,4 +1,5 @@
-import ProgressTracker from "../../common/teacherDashboard/progressTracker/ProgressTracker";
+import ProgressTracker from "../../Components/teacherDashboard/progressTracker/ProgressTracker";
+import StudentProgress from "../../Components/teacherDashboard/progressTracker/studentProgress/StudentProgress";
 import "./TempTeacherDashboard.css";
 
 export default function TempTeacherDashboard() {
@@ -11,6 +12,7 @@ export default function TempTeacherDashboard() {
       <div id="tracker-border" className="grid-item wide">
         <div id="tracker-container" className="grid-item">
           <ProgressTracker />
+          <StudentProgress />
         </div>
         tracker border
       </div>

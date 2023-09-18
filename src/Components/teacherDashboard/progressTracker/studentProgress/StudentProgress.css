@@ -1,1 +1,29 @@
 /* STYLES */
+#progress-container {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Create a 2-column grid with the first column taking up available space */
+  align-items: center; /* Vertically center items */
+  width: 1317px;
+  height: 140px;
+  /* UI Properties */
+  background-color: #ffffff;
+  border-radius: 15px;
+  opacity: 1;
+}
+
+#student-info {
+  display: grid; /* Nested grid for the student info */
+  grid-template-columns: auto; /* Create a single column within the nested grid */
+  background: transparent;
+  justify-self: start; /* Move this item to the end of the parent grid (second column) */
+  margin-right: 20px; /* Add margin to push the content slightly to the right */
+}
+
+#student-name {
+  background: transparent;
+}
+
+#projects-completed {
+  /* Layout Properties */
+  background: transparent;
+}

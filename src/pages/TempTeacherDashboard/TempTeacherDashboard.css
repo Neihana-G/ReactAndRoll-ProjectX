@@ -23,7 +23,7 @@
   width: 1920px;
   height: 1080px;
   /* UI Properties */
-  background: #a30505 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
   overflow: hidden;
 }
@@ -32,7 +32,7 @@
 #header-bar {
   width: 1920px;
   height: 60px;
-  background-color: #b2e4fa;
+  background-color: #ffffff;
 }
 
 /* side bar  */
@@ -45,7 +45,7 @@
   /* UI Properties */
   /* background: transparent url("img/Rectangle 249.png") 0% 0% no-repeat
       padding-box; */
-  background: rgb(76, 255, 5) 0% 0% no-repeat padding-box;
+  background: #43c0f6 0% 0% no-repeat padding-box;
   opacity: 1;
 }
 
@@ -59,12 +59,13 @@
   /* UI Properties */
 
   /* border: 1px solid #1f353f; */
-  background: #bb0fe6;
+  background: #b2e4fa;
   /* opacity: 1; */
   /* grid-row-start: 2;
     grid-row-end: 2;
     grid-column-start: 2;
     grid-row-end: 2; */
+  border-color: #b2e4fa;
 }
 
 #tracker-border {
@@ -79,7 +80,7 @@
 
   width: 1920px;
   height: 70px;
-  background-color: #b2e4fa;
+  background-color: #ffffff;
 }
 
 /* MY CONTENTS PROGRESS TRACKER INNERS */
@@ -89,6 +90,6 @@
 
   /* Center the container within the middle column */
   grid-column: 2;
-  background-color: aquamarine;
+  background-color: #ffffff80;
   border-radius: 30px;
 }
