@@ -1,4 +1,4 @@
-import ProgressTracker from "../../Components/common/teacherDashboard/progressTracker/ProgressTracker";
+import ProgressTracker from "../../common/teacherDashboard/progressTracker/ProgressTracker";
 import "./TeacherDashboard.css";
 
 export default function TeacherDashboard() {
