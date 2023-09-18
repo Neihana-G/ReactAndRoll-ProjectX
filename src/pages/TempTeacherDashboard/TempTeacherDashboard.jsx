@@ -1,7 +1,7 @@
 import ProgressTracker from "../../common/teacherDashboard/progressTracker/ProgressTracker";
-import "./TeacherDashboard.css";
+import "./TempTeacherDashboard.css";
 
-export default function TeacherDashboard() {
+export default function TempTeacherDashboard() {
   return (
     <div id="background-wrapper">
       <div id="header-bar">HEADER BAR</div>
