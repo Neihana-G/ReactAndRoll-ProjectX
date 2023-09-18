@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Nunito:wght@900&family=Open+Sans&family=REM:wght@300&family=Roboto:wght@400;900&display=swap");
+
+.helpBody {
+    background-color: #b2e4fa;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 50px;
+}
+.helpWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 90vh;
+    border-radius: 30px;
+    background-color: #ffffff80;
+}
+.helpMainContent {
+    width: 90%;
+    height: 80%;
+    background-color: #ffffff80;
+    font-family: "Nunito", sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+.helpMainContent h3 {
+    color: #6c6c6c;
+    font-size: 24px;
+    padding: 0 50px;
+}
+.actionButtons {
+    text-align: right;
+}
+.actionButtons button {
+    font-family: "Nunito", sans-serif;
+    background: none;
+    border: none;
+    font-size: 18px;
+    margin: 0 0px 0 40px;
+    color: #6c6c6c;
+}
+.actionButtons button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.notificationWrapper {
+    position: relative;
+    width: 90%;
+    height: 100%;
+}
+.notifications {
+    max-height: 100%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    padding-bottom: 200px;
+    bottom: 0;
+    top: 30px;
+    margin: 0;
+    overflow-y: scroll;
+}
+.notifications::-webkit-scrollbar {
+    appearance: none;
+}
+.scrollbar_wrapper {
+    height: 100%; /* must have some height */
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    width: 24px; /* must have some width */
+    display: flex;
+    align-items: center;
+}
+.scrollbar {
+    height: 90%; /* must have some height */
+    position: relative;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    width: 24px; /* must have some width */
+    border-radius: 30px;
+    background-color: #ffffffbf;
+    display: flex;
+    justify-content: center;
+}
+
+/* The track is meant to fill the space it's given, so top and bottom are set to 0. */
+.scrollbar_track {
+    bottom: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+
+    width: 24px; /* must have some width */
+}
+
+/* No top or bottom set for the thumb. That will be controlled by JavaScript. */
+.scrollbar_thumb {
+    position: absolute;
+    background-color: #43c0f6;
+    border-radius: 30px;
+    /* margin: auto; */
+    width: 16px; /* must have some width */
+}

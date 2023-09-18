@@ -17,7 +17,7 @@
     background: none;
     border: none;
     color: white;
-    padding: 20px 70px;
+    padding: 20px 40px;
     font-size: 14px;
     font-family: "Open Sans", sans-serif;
     text-transform: uppercase;
@@ -42,7 +42,7 @@
 }
 .openCloseBtn {
     background-color: #b2e4fa;
-    background-image: url("../assets/arrowLeft.png");
+    background-image: url("../../assets/arrowLeft.png");
     background-position: center;
     background-repeat: no-repeat;
     width: 64px;
@@ -87,7 +87,7 @@
 /*  */
 /* Changes styles when side bar is closed */
 .sideBarClosed {
-    width: 150px;
+    width: 100px;
 }
 .btnClosed {
     height: 85px;
@@ -95,7 +95,9 @@
 }
 .btnClosed img {
     width: 100px;
+    height: 50px;
 }
+
 .openCloseBtnClosed {
     right: 100%;
     left: 0;
