@@ -22,16 +22,6 @@ export default function HelpRequests() {
     };
 
     useEffect(() => {
-        if (content) {
-            if (content.current.scrollHeight > content.current.clientHeight) {
-                console.log(content.current.scrollHeight);
-                console.log(content.current.clientHeight);
-                setScollBarVisible(true);
-            }
-        }
-        console.log(scrollBarVisible);
-        // console.log(content.current.clientHeight);
-        // console.log(content.current.scrollHeight);
         setThumbPos(
             scrollbar.current.clientHeight * scrollPosition -
                 thumbHeight * scrollPosition
@@ -69,15 +59,15 @@ export default function HelpRequests() {
                         >
                             <HelpNotification />
                             <HelpNotification />
-                            {/* <HelpNotification /> */}
-                            {/* <HelpNotification /> */}
-                            {/* <HelpNotification />
                             <HelpNotification />
                             <HelpNotification />
                             <HelpNotification />
                             <HelpNotification />
                             <HelpNotification />
-                            <HelpNotification /> */}
+                            <HelpNotification />
+                            <HelpNotification />
+                            <HelpNotification />
+                            <HelpNotification />
                         </div>
                     </div>
 
