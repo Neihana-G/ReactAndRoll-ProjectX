@@ -3,13 +3,57 @@ import styles from "./StudentProgress.module.css";
 export default function StudentProgress({ name, gender, icon, datetime }) {
   return (
     <div className={styles.main}>
-      <input type="checkbox" className={styles.checkbox}></input>
       <div className={styles.notificationBody}>
-        <img src="/images/students/AidenAndrews.png" />
-        <p>Andrew needs help with his project.</p>
-        <div className={styles.timestamp}>
-          <p>TUE 28 April 2023</p>
-          <p>10:43am</p>
+        <h1>AIDEN ANDREWS</h1>
+        <div className={styles.completedProjects}>
+          <p>4/15 Projects Completed</p>
+        </div>
+      </div>
+      <div className={styles.projectCounter}>
+        <div id="1" className={styles.numbers}>
+          1
+        </div>
+        <div id="2" className={styles.numbers}>
+          2
+        </div>
+        <div id="3" className={styles.numbers}>
+          3
+        </div>
+        <div id="4" className={styles.numbers}>
+          4
+        </div>
+        <div id="5" className={styles.numbers}>
+          5
+        </div>
+        <div id="6" className={styles.numbers}>
+          6
+        </div>
+        <div id="7" className={styles.numbers}>
+          7
+        </div>
+        <div id="8" className={styles.numbers}>
+          8
+        </div>
+        <div id="9" className={styles.numbers}>
+          9
+        </div>
+        <div id="10" className={styles.numbers}>
+          10
+        </div>
+        <div id="11" className={styles.numbers}>
+          11
+        </div>
+        <div id="12" className={styles.numbers}>
+          12
+        </div>
+        <div id="13" className={styles.numbers}>
+          13
+        </div>
+        <div id="14" className={styles.numbers}>
+          14
+        </div>
+        <div id="15" className={styles.numbers}>
+          15
         </div>
       </div>
     </div>
