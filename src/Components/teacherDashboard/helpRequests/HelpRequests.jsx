@@ -25,9 +25,7 @@ export default function HelpRequests() {
         e.preventDefault();
         // e.stopPropagation();
         setScrollStartpos(e.clientY);
-        console.log("thumb: ", thumbPos);
         if (content.current) setInitialScrollTop(content.current.scrollTop);
-        console.log("Mouse down");
         setIsDragging(true);
     }, []);
 
@@ -46,7 +44,6 @@ export default function HelpRequests() {
         e.preventDefault();
         e.stopPropagation();
         if (isDragging) {
-            console.log(scrollStartPos, e.clientY);
             const deltaY = scrollStartPos - e.clientY;
             content.current.scrollTop = initialScrollTop - deltaY * 2;
         }
@@ -87,7 +84,6 @@ export default function HelpRequests() {
 
     useEffect(() => {
         if (scrollbar.current && content.current) {
-            console.log("use effect");
             setThumbPos(
                 scrollbar.current.clientHeight * scrollPosition -
                     thumbHeight * scrollPosition
