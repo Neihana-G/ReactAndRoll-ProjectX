@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import styles from "./SideBar.module.css";
 import { useState } from "react";
-import defaultImg from "../assets/StudentDashboard/sendPhoto.png";
-import profileImg from "../assets/profile.png";
-import settingsImg from "../assets/settings.png";
-import logoutImg from "../assets/logout.png";
+import defaultImg from "../../assets/StudentDashboard/sendPhoto.png";
+import profileImg from "../../assets/profile.png";
+import settingsImg from "../../assets/settings.png";
+import logoutImg from "../../assets/logout.png";
 
 //The parent element of this prop must be Display: Flex in order to display sideway
 // The pages deconsructed prop must be passed through as an array of objects including: name, router path, normal image and dark image. If one or no images are passed a defailt image will be used as a placeholder
