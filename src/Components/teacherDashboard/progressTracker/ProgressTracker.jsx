@@ -67,19 +67,19 @@ export default function ProgressTracker() {
               <StudentProgress />
               <StudentProgress />
             </div>
-          </div>
 
-          <div className={styles.scrollbar_wrapper}>
-            <div className={styles.scrollbar} ref={scrollbar}>
-              <div className={styles.scrollbar_track}></div>
-              <div
-                className={styles.scrollbar_thumb}
-                ref={scrollbar_thumb}
-                style={{
-                  height: `${thumbHeight}px`,
-                  top: `${thumbPos}px`,
-                }}
-              ></div>
+            <div className={styles.scrollbar_wrapper}>
+              <div className={styles.scrollbar} ref={scrollbar}>
+                <div className={styles.scrollbar_track}></div>
+                <div
+                  className={styles.scrollbar_thumb}
+                  ref={scrollbar_thumb}
+                  style={{
+                    height: `${thumbHeight}px`,
+                    top: `${thumbPos}px`,
+                  }}
+                ></div>
+              </div>
             </div>
           </div>
         </div>

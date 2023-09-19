@@ -22,13 +22,13 @@
   height: 80%;
   font-family: "Nunito", sans-serif;
   overflow: hidden;
-  /* position: relative; */
+  position: relative;
 }
 
 .actionButtons {
   display: flex;
-  justify-content: space-between; /* Align items to both ends (left and right) */
-  align-items: center; /* Vertically center items */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .actionButtons h3 {
@@ -40,7 +40,7 @@
 }
 
 .actionButtons button {
-  display: inline-block; /* Add this line to make the button inline-block */
+  display: inline-block;
   font-family: "Nunito", sans-serif;
   background: none;
   border: none;
@@ -48,8 +48,6 @@
   margin: 0;
   margin-right: 80px;
   color: #6c6c6c;
-
-  /* text-align: left; */
 }
 .actionButtons button:hover {
   text-decoration: underline;
@@ -103,7 +101,7 @@
   cursor: pointer;
   position: absolute;
   top: 0;
-
+  left: 30px;
   width: 24px; /* must have some width */
 }
 
