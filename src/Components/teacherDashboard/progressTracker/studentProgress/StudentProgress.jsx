@@ -1,11 +1,16 @@
-import "./StudentProgress.css";
+import styles from "./StudentProgress.module.css";
 
-export default function StudentProgress() {
+export default function StudentProgress({ name, gender, icon, datetime }) {
   return (
-    <div id="progress-container">
-      <div id="student-info">
-        <h1 id="student-name">AIDEN ANDREWS</h1>
-        <p id="projects-completed">0/15 PROJECTS</p>
+    <div className={styles.main}>
+      <input type="checkbox" className={styles.checkbox}></input>
+      <div className={styles.notificationBody}>
+        <img src="/images/students/AidenAndrews.png" />
+        <p>Andrew needs help with his project.</p>
+        <div className={styles.timestamp}>
+          <p>TUE 28 April 2023</p>
+          <p>10:43am</p>
+        </div>
       </div>
     </div>
   );
