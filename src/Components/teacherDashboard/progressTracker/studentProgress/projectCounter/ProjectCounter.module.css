@@ -1,1 +1,25 @@
 /* STYLES */
+/* Project Counter Styling  */
+.projectCounter {
+  display: flex;
+  position: absolute;
+  right: 110px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.numbers {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px #00000040;
+  border: solid 0.5px;
+  border-color: #6c6c6c;
+
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  font-size: 22px;
+  margin-right: 25px;
+  color: #6c6c6c;
+}

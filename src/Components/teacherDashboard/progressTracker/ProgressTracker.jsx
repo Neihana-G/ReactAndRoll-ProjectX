@@ -38,11 +38,12 @@ export default function ProgressTracker() {
     <div className={styles.helpBody}>
       <div className={styles.helpWrapper}>
         <div className={styles.helpMainContent}>
-          <h3>BEGINNER COURSE</h3>
+          {/* <h3>BEGINNER COURSE</h3> */}
           {/* Custom scroll bar */}
 
           <div className={styles.notificationWrapper} ref={viewport}>
             <div className={styles.actionButtons}>
+              <h3>BEGINNER COURSE</h3>
               <button>
                 {/* <i class="fa-regular fa-file-export"></i> */}
                 EXPORT AS SPREADSHEET
