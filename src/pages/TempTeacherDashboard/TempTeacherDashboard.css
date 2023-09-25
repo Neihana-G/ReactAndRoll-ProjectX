@@ -1,0 +1,95 @@
+/* STYLES */
+
+/*Grid set up */
+#background-wrapper {
+  display: grid;
+  grid-template-columns: 236px 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  /* ADD GAP HERE IF NEEDED - 10PX */
+}
+
+.narrow {
+  grid-column: 1;
+}
+
+.wide {
+  grid-column: 2;
+}
+
+/* white background page */
+#background-wrapper {
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  height: 1080px;
+  /* UI Properties */
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
+  overflow: hidden;
+}
+
+/* header bar  */
+#header-bar {
+  width: 1920px;
+  height: 60px;
+  background-color: #ffffff;
+}
+
+/* side bar  */
+#sidebar {
+  /* Layout Properties */
+  top: 62px;
+  left: 0px;
+  width: 236px;
+  height: 957px;
+  /* UI Properties */
+  /* background: transparent url("img/Rectangle 249.png") 0% 0% no-repeat
+      padding-box; */
+  background: #43c0f6 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+/* Tracker and inside contents */
+#tracker-border {
+  /* Layout Properties */
+  /* top: 62px;
+    left: 236px;
+    width: 1684px; */
+  height: 957px;
+  /* UI Properties */
+
+  /* border: 1px solid #1f353f; */
+  background: #b2e4fa;
+  /* opacity: 1; */
+  /* grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-row-end: 2; */
+  border-color: #b2e4fa;
+}
+
+#tracker-border {
+  display: grid;
+  grid-template-columns: 0.5fr auto 1fr; /* Three columns with equal width on both sides */
+  align-items: center; /* Center vertically */
+}
+
+/* Footer bar */
+#footer-bar {
+  /* layout Properties */
+
+  width: 1920px;
+  height: 70px;
+  background-color: #ffffff;
+}
+
+/* MY CONTENTS PROGRESS TRACKER INNERS */
+#tracker-container {
+  width: 1550px;
+  height: 850px;
+
+  /* Center the container within the middle column */
+  grid-column: 2;
+  background-color: #ffffff80;
+  border-radius: 30px;
+}
