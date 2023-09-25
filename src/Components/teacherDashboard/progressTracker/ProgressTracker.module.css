@@ -73,9 +73,9 @@
   appearance: none;
 }
 .scrollbar_wrapper {
-  height: 100%; /* must have some height */
+  height: 95%; /* must have some height */
   position: absolute;
-  top: 0;
+  top: 75px;
   right: 20px;
   bottom: 0;
   width: 24px; /* must have some width */
@@ -83,10 +83,9 @@
   align-items: center;
 }
 .scrollbar {
-  height: 70%; /* must have some height */
+  height: 90%; /* must have some height */
   position: relative;
-  top: 0;
-  right: 20px;
+  top: 2px;
   bottom: 0;
   width: 24px; /* must have some width */
   border-radius: 30px;

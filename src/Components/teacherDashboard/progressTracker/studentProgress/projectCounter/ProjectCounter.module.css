@@ -16,9 +16,9 @@
   border: solid 0.5px;
   border-color: #6c6c6c;
 
-  display: flex; /* Use flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 22px;
   margin-right: 25px;
   color: #6c6c6c;
