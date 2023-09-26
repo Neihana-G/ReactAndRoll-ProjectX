@@ -5,7 +5,7 @@
 .navbar {
   top: 0px;
   left: 0px;
-  width: 1920px;
+  width: 100%;
   height: 50px;
   background: transparent;
   box-shadow: 0px 3px 6px #00000029;
@@ -14,6 +14,9 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  font-family: "Open Sans Bold", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .logo {
@@ -35,9 +38,10 @@
 }
 
 .menuSelection {
-  font-family: "Open Sans", sans-serif;
+  margin-top: 5px;
   margin-left: 80px;
   color: white;
+  cursor: pointer;
 }
 
 .studentLanguage {
@@ -56,15 +60,18 @@
 }
 
 a {
-  font-size: 9px;
+  font-size: 11px;
+  margin-top: 5px;
 }
 
 .nzFlag {
+  margin-top: 5px;
   height: 9px;
   width: 18px;
 }
 
 .maoriFlag {
+  margin-top: 5px;
   height: 9px;
   width: 17px;
 }
@@ -75,11 +82,11 @@ a {
 }
 
 .profilePic {
-  margin-top: 15px;
+  margin-top: 6px;
   width: 20px;
   height: 20px;
 }
 
 .studentName {
-  margin-top: 12px;
+  margin-top: 7px;
 }
