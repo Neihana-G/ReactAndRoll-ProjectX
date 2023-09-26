@@ -15,46 +15,46 @@ import projectLibraryImgSelected from "../../assets/TeacherDashboard/projectLibr
 import Footer from "../../Components/common/Footer";
 
 export default function TeacherDashboard() {
-    const sidebarPaths = [
-        {
-            name: "Progress Tracker",
-            path: "progress-tracker",
-            img: progressTrackerImg,
-            darkImg: progressTrackerImgSelected,
-        },
-        {
-            name: "Student Profiles",
-            path: "student-profile",
-            img: studentProfilesImg,
-            darkImg: studentProfilesImgSelected,
-        },
-        {
-            name: "Help Requests",
-            path: "help-requests",
-            img: helpRequestsImg,
-            darkImg: helpRequestsImgSelected,
-        },
-        {
-            name: "Project Submissions",
-            path: "project-submissions",
-            img: submissionsImgs,
-            darkImg: submissionsImgsSelected,
-        },
-        {
-            name: "Project Library",
-            path: "project-library",
-            img: projectLibraryImg,
-            darkImg: projectLibraryImgSelected,
-        },
-    ];
-    return (
-        <div className={styles.main}>
-            <TeacherDashboardHeader />
-            <div style={{ display: "flex" }}>
-                <SideBar pages={sidebarPaths} style={{ height: "90vh" }} />
-                <Outlet />
-            </div>
-            <Footer />
-        </div>
-    );
+  const sidebarPaths = [
+    {
+      name: "Progress Tracker",
+      path: "progress-tracker",
+      img: progressTrackerImg,
+      darkImg: progressTrackerImgSelected,
+    },
+    {
+      name: "Student Profiles",
+      path: "student-profile",
+      img: studentProfilesImg,
+      darkImg: studentProfilesImgSelected,
+    },
+    {
+      name: "Help Requests",
+      path: "help-requests",
+      img: helpRequestsImg,
+      darkImg: helpRequestsImgSelected,
+    },
+    {
+      name: "Project Submissions",
+      path: "project-submissions",
+      img: submissionsImgs,
+      darkImg: submissionsImgsSelected,
+    },
+    {
+      name: "Project Library",
+      path: "project-library",
+      img: projectLibraryImg,
+      darkImg: projectLibraryImgSelected,
+    },
+  ];
+  return (
+    <div className={styles.main}>
+      <TeacherDashboardHeader />
+      <div style={{ display: "flex" }}>
+        <SideBar pages={sidebarPaths} style={{ height: "90vh" }} />
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
+  );
 }
