@@ -20,6 +20,7 @@
 .helpMainContent {
     width: 90%;
     height: 80%;
+    border-radius: 30px;
     background-color: #ffffff80;
     font-family: "Nunito", sans-serif;
     overflow: hidden;
@@ -99,6 +100,7 @@
 
 /* No top or bottom set for the thumb. That will be controlled by JavaScript. */
 .scrollbar_thumb {
+    cursor: pointer;
     position: absolute;
     background-color: #43c0f6;
     border-radius: 30px;
