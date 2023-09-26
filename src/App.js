@@ -18,7 +18,7 @@ function App() {
                         path="progress-tracker"
                         element={<ProgressTracker />}
                     ></Route>
-
+                    <Route path="student-profiles" element={"Profile"}></Route>
                     <Route
                         path="help-requests"
                         element={<HelpRequests />}
@@ -28,8 +28,8 @@ function App() {
                         element={"submissions"}
                     ></Route>
                 </Route>
-                <Route path="project-library" element={<Library />}></Route>
-                <Route path="student-profile" element={<Profiles />}></Route>
+                <Route path="/project-library" element={<Library />}></Route>
+                <Route path="/student-profile" element={<Profiles />}></Route>
                 <Route
                     path="/teacher-profile"
                     element={<TeacherProfile />}
