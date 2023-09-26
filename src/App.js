@@ -24,11 +24,11 @@ function App() {
                         element={"submissions"}
                     ></Route>
                     <Route path="project-library" element={"library"}></Route>
-                    <Route
-                        path="/teacher-profile"
-                        element={<TeacherProfile />}
-                    ></Route>
                 </Route>
+                <Route
+                    path="/teacher-profile"
+                    element={<TeacherProfile />}
+                ></Route>
             </Routes>
         </div>
     );
