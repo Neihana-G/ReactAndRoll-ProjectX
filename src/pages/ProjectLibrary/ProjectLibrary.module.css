@@ -1,0 +1,152 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-weight: bold;
+  color: #767676;
+}
+.content_wrap {
+  flex: 1;
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: row;
+}
+
+.rightSection {
+  display: block;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 100px;
+  font-family: "Nunito", sans-serif;
+}
+
+.sideMenu {
+  font-family: "Open Sans", sans-serif;
+  margin-left: 180px;
+  margin-top: 148px;
+  width: 135px;
+  min-height: 400px;
+}
+
+hr {
+  margin-top: -10px;
+}
+
+.sideHeader {
+  margin-top: 30px;
+  font-size: 11px;
+}
+
+.checklist {
+  margin-top: -5px;
+  font-size: 9px;
+}
+
+.checkbox {
+  transform: scale(0.8);
+}
+
+.label {
+  padding-left: 5px;
+}
+
+.projects {
+  font-size: 30px;
+}
+.welcome {
+  font-size: 15px;
+  margin-top: -10px;
+}
+
+.segmented_container {
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+}
+
+.control_container {
+  color: black;
+  height: 20px;
+  display: inline-flex;
+  padding: 0cap;
+  column-gap: 4px;
+  justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: inset 0 0px 8px rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.04);
+  font-size: 10px;
+}
+
+.control_difficulty {
+  min-width: 44px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+  position: relative;
+}
+
+.control_difficulty_bg {
+  background-color: magenta;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.control_difficulty_text {
+  z-index: 1;
+  position: relative;
+}
+
+.show {
+  font-size: 15px;
+  margin-left: 400px;
+  margin-top: 0px;
+  margin-right: 10px;
+}
+
+.control_page {
+  min-width: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+  position: relative;
+  align-items: center;
+}
+
+.projectImages {
+  background-color: yellow;
+  height: 1000px;
+  width: 100%;
+}
+
+.rowContainer {
+  width: 100%;
+  background-color: cadetblue;
+  height: 290px;
+}
+
+.oneContainer {
+  background-color: aliceblue;
+  height: 100%;
+  width: 220px;
+}
+
+.backToTop {
+  margin-top: 180px;
+  margin-left: 678px;
+  margin-bottom: 150px;
+  font-family: "Nunito", sans-serif;
+  background-color: goldenrod;
+  border: transparent;
+  border-radius: 5px;
+  font-size: 13px;
+  height: 25px;
+  width: 130px;
+  color: white;
+  cursor: pointer;
+}
