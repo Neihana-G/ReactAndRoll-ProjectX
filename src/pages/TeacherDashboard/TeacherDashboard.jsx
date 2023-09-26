@@ -12,6 +12,7 @@ import submissionsImgs from "../../assets/TeacherDashboard/projectSubmissions.pn
 import submissionsImgsSelected from "../../assets/TeacherDashboard/projectSubmissionsSelected.png";
 import projectLibraryImg from "../../assets/TeacherDashboard/projectLibrary.png";
 import projectLibraryImgSelected from "../../assets/TeacherDashboard/projectLibrarySelected.png";
+import Footer from "../../components/common/Footer";
 
 export default function TeacherDashboard() {
   const sidebarPaths = [
@@ -53,6 +54,7 @@ export default function TeacherDashboard() {
         <SideBar pages={sidebarPaths} style={{ height: "90vh" }} />
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 }
