@@ -1,0 +1,122 @@
+/* .studentCard { */
+/* width: 250px; */
+/* height: 250px; */
+/* background-color: rgb(170, 47, 47); */
+/* border-radius: 30%; */
+/* } */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Nunito:wght@900&family=Open+Sans&family=REM:wght@300&family=Roboto:wght@400;900&display=swap");
+
+.helpBody {
+  background-color: #b2e4fa;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+}
+.helpWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 90vh;
+  border-radius: 30px;
+  background-color: #ffffff80;
+}
+.helpMainContent {
+  width: 90%;
+  height: 80%;
+  font-family: "Nunito", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actionButtons h3 {
+  font-family: "Nunito", sans-serif;
+  color: #6c6c6c;
+  font-size: 30px;
+  margin: 0; /* Remove any margin */
+  margin-left: 40px;
+}
+
+.actionButtons button {
+  display: inline-block;
+  font-family: "Nunito", sans-serif;
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin: 0;
+  margin-right: 80px;
+  color: #6c6c6c;
+}
+.actionButtons button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.notificationWrapper {
+  position: relative;
+  /* width: 90%; */
+  height: 100%;
+}
+.notifications {
+  max-height: 65%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding-bottom: 170px;
+  bottom: 0;
+  top: 110px;
+  margin: 0;
+  overflow-y: scroll;
+}
+.notifications::-webkit-scrollbar {
+  appearance: none;
+}
+.scrollbar_wrapper {
+  height: 95%; /* must have some height */
+  position: absolute;
+  top: 75px;
+  right: 20px;
+  bottom: 0;
+  width: 24px; /* must have some width */
+  display: flex;
+  align-items: center;
+}
+.scrollbar {
+  height: 90%; /* must have some height */
+  position: relative;
+  top: 2px;
+  bottom: 0;
+  width: 24px; /* must have some width */
+  border-radius: 30px;
+  background-color: #ffffffbf;
+  display: flex;
+  justify-content: center;
+}
+
+/* The track is meant to fill the space it's given, so top and bottom are set to 0. */
+.scrollbar_track {
+  bottom: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 24px; /* must have some width */
+}
+
+/* No top or bottom set for the thumb. That will be controlled by JavaScript. */
+.scrollbar_thumb {
+  position: absolute;
+  background-color: #43c0f6;
+  border-radius: 30px;
+  /* margin: auto; */
+  width: 16px; /* must have some width */
+}
+
+/* NEW CSS */
