@@ -1,0 +1,22 @@
+img {
+  width: 80px;
+}
+
+.card {
+  background-color: blueviolet;
+  width: 150px;
+  padding: 25px;
+  text-align: center;
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 14px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

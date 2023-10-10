@@ -1,8 +1,8 @@
 import styles from "./ProjectLibrary.module.css";
 import BlueNavBar from "../../Components/common/BlueNavBar";
 import Footer from "../../Components/common/Footer";
-import ProjectLibraryBody from "../../Components/ProjectLibrary/ProjectLibraryBody";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import React from "react";
 
 export default function ProjectLibrary() {
@@ -14,6 +14,50 @@ export default function ProjectLibrary() {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const [projects, setProjects] = useState();
+  useEffect(function () {
+    fetch("http://localhost:4000/api/projects")
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setProjects(response);
+      });
+  }, []);
+
+  const [selectedActivity, setSelectedActivity] = useState("All");
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [selectedDifficulty, setSelectedDifficulty] = useState("All");
+
+  const handleProjects = (project) => {
+    setSelectedActivity(project);
+  };
+
+  const handleDifficulty = (project) => {
+    setSelectedDifficulty(project);
+  };
+
+  useEffect(() => {
+    if (selectedActivity === "All") {
+      setFilteredProjects(projects);
+    } else {
+      const filteredActivity = projects.filter(
+        (item) => item.category === selectedActivity
+      );
+      setFilteredProjects(filteredActivity);
+    }
+  }, [selectedActivity]);
+
+  useEffect(() => {
+    if (selectedDifficulty === "All") {
+      setFilteredProjects(projects);
+    } else {
+      const filteredDifficulty = projects.filter(
+        (item) => item.year_level === selectedDifficulty
+      );
+      setFilteredProjects(filteredDifficulty);
+    }
+  }, [selectedDifficulty]);
 
   return (
     <div className={styles.main}>
@@ -33,16 +77,36 @@ export default function ProjectLibrary() {
             <p className={styles.sideHeader}>ACTIVITY TYPE</p>
             <hr></hr>
             <div className={styles.checklist}>
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                onClick={() => handleProjects("Animation")}
+                isActive={selectedActivity === "Animation"}
+              ></input>
               <label className={styles.label}>Animation</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                onClick={() => handleProjects("Game")}
+                isActive={selectedActivity === "Game"}
+              ></input>
               <label className={styles.label}>Game</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                onClick={() => handleProjects("Chatbot")}
+                isActive={selectedActivity === "Chatbot"}
+              ></input>
               <label className={styles.label}>Chatbot</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                onClick={() => handleProjects("Augmented Reality")}
+                isActive={selectedActivity === "Augmented Reality"}
+              ></input>
               <label className={styles.label}>Augmented Reality</label>
             </div>
             <p className={styles.sideHeader}>YEAR LEVEL</p>
@@ -94,7 +158,10 @@ export default function ProjectLibrary() {
                   return (
                     <div
                       className={styles.control_difficulty}
-                      onClick={() => setCurrentIndex(index)}
+                      onClick={() => {
+                        setCurrentIndex(index);
+                        handleDifficulty(difficulties[index]);
+                      }}
                       //setting the current index according to the index on which we are on
                       //e.g. if I select intermediate, I am getting index 1
                     >
@@ -131,13 +198,20 @@ export default function ProjectLibrary() {
               </div>
             </div>
             <div className={styles.projectImages}>
-              <div className={styles.rowContainer}>
-                <div className={styles.oneContainer}>
-                  <img></img>
-                  <p></p>
-                  <p></p>
-                </div>
-              </div>
+              {filteredProjects &&
+                filteredProjects.map(function (project) {
+                  return (
+                    <div key={project.id} className={styles.card}>
+                      <img src={project.images} alt="project"></img>
+                      <p className={styles.description}>
+                        {project.description}
+                      </p>
+                      <p className={styles.smallDescription}>
+                        {project.year_level} | {project.animation}
+                      </p>
+                    </div>
+                  );
+                })}
             </div>
             <button className={styles.backToTop} onClick={handleScrollToTop}>
               Back To Top
