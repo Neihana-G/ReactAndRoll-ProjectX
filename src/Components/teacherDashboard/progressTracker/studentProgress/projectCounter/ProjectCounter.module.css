@@ -6,7 +6,7 @@
   right: 98px;
   top: 50%;
   transform: translateY(-50%);
-  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .numbers {

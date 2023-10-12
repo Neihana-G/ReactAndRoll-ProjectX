@@ -21,11 +21,10 @@ const StudentProfiles = () => {
             <div className={styles.studentCard}>
               <img
                 className={styles.studentPhoto}
-                src={user.images}
+                src={user.profile_pic}
                 alt="Student 1"
               />
               <h3>{user.name}</h3>
-              <p>Major: Computer Science</p>
             </div>
           );
         })}

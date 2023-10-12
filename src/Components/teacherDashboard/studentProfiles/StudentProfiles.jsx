@@ -59,6 +59,7 @@ export default function StudentProfiles() {
               onScroll={handleScroll}
             >
               <StudentCards />
+              {/* <StudentCards />
               <StudentCards />
               <StudentCards />
               <StudentCards />
@@ -67,8 +68,7 @@ export default function StudentProfiles() {
               <StudentCards />
               <StudentCards />
               <StudentCards />
-              <StudentCards />
-              <StudentCards />
+              <StudentCards /> */}
             </div>
 
             <div className={styles.scrollbar_wrapper}>
