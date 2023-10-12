@@ -1,10 +1,10 @@
 .blueFooter {
     width: 100%;
-    height: 40vh;
+    height: auto;
     background-color: #b2e4fa;
     display: flex;
     justify-content: center;
-    padding-top: 100px;
+    padding: 100px 0;
 }
 
 .container {
@@ -28,4 +28,27 @@
 .container div p:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .blueFooter {
+        padding: 50px 0;
+    }
+    .container div h3 {
+        font-size: 16px;
+    }
+    .container div p {
+        font-size: 10px;
+        margin: 0;
+    }
+    .container {
+        width: 80%;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+    }
+    .levelUp {
+        grid-column: span 2;
+    }
 }
