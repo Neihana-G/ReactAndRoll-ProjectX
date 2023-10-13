@@ -22,19 +22,23 @@ export default function HomeHeader(props) {
                     <img src={nzFLag} alt="NZ-Flag" />
                     <img src={maoriFlag} alt="NZ-Flag" />
                 </div>
-                <div>
+                <div className={styles.profileAction}>
                     {props.signedIn ? (
                         <>
                             <img
                                 src="/images/teachers/JasminaSalvador.png"
                                 alt="profile"
                             />
-                            <p>{props.teacherName}</p>
+                            <p onClick={props.profileFunction}>
+                                {props.teacherName}
+                            </p>
                         </>
                     ) : (
                         <>
                             <img src={defaultAvatar} alt="profile" />
-                            <p>REGISTER | LOG IN</p>
+                            <p onClick={props.profileFunction}>
+                                REGISTER | LOG IN
+                            </p>
                         </>
                     )}
                 </div>
