@@ -51,6 +51,7 @@ export default function SideBar({ pages }) {
 
                         {el.img && el.darkImg ? (
                             <img
+                                className={styles.sideBarImages}
                                 src={
                                     index !== currentActiveNav
                                         ? el.img
