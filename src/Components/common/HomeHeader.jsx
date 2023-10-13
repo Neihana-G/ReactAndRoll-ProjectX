@@ -1,9 +1,11 @@
 import styles from "./HomeHeader.module.css";
 import logo from "../../assets/NavBar/LevelUpWorks-white.png";
+import defaultAvatar from "../../assets/NavBar/Avatar-white.png";
 import { NavLink } from "react-router-dom";
 import nzFLag from "../../assets/NavBar/NZFlag.png";
 import maoriFlag from "../../assets/NavBar/MaoriFlag.png";
-export default function HomeHeader() {
+
+export default function HomeHeader(props) {
     return (
         <div className={styles.homeHeader}>
             <div className={styles.container}>
@@ -20,12 +22,25 @@ export default function HomeHeader() {
                     <img src={nzFLag} alt="NZ-Flag" />
                     <img src={maoriFlag} alt="NZ-Flag" />
                 </div>
-                <div>
-                    <img
-                        src="/images/teachers/JasminaSalvador.png"
-                        alt="profile"
-                    />
-                    <p>TEACHER NAME</p>
+                <div className={styles.profileAction}>
+                    {props.signedIn ? (
+                        <>
+                            <img
+                                src="/images/teachers/JasminaSalvador.png"
+                                alt="profile"
+                            />
+                            <p onClick={props.profileFunction}>
+                                {props.teacherName}
+                            </p>
+                        </>
+                    ) : (
+                        <>
+                            <img src={defaultAvatar} alt="profile" />
+                            <p onClick={props.profileFunction}>
+                                REGISTER | LOG IN
+                            </p>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

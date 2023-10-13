@@ -30,7 +30,7 @@ export default function BlueBigFooter() {
                     <p>Terms & Conditions</p>
                     <p>Privacy Policy</p>
                 </div>
-                <div>
+                <div className={styles.levelUp}>
                     <h3>LevelUp Works</h3>
                     <p>
                         LevelUp Works LevelUp Works is an Auckland-based

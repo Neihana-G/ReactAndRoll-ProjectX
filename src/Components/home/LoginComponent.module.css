@@ -1,0 +1,55 @@
+.container {
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 6%;
+}
+.container img {
+    max-width: 50%;
+}
+.container h2 {
+    font-family: "Nunito";
+    font-size: 43px;
+    color: #707070;
+}
+.container form {
+    width: 60%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.container form input {
+    width: 95%;
+    height: 8%;
+    border: 1px solid #a29f9f;
+    color: #a29f9f;
+    border-radius: 10px;
+    font-family: "Open Sans", "sans-serif";
+    font-weight: 500;
+    padding: 0 20px;
+
+    margin: 20px;
+}
+.formOptions {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.formOptions p {
+    font-family: "Nunito";
+    font-size: 24px;
+    color: #a5a5a5;
+}
+.formOptions p:hover {
+    cursor: pointer;
+}
+.currentOption {
+    color: #707070 !important;
+    border-bottom: 5px solid #f91c85;
+}

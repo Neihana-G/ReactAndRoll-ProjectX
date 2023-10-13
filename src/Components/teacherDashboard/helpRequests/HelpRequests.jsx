@@ -1,6 +1,7 @@
 import styles from "./HelpRequests.module.css";
 import HelpNotification from "./HelpNotification";
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import axios from "axios";
 
 export default function HelpRequests() {
     const [contentHeight, setContentHeight] = useState(0);
@@ -20,6 +21,51 @@ export default function HelpRequests() {
     const [initialScrollTop, setInitialScrollTop] = useState(0);
     const [initialThumbPos, setInitialThumbPos] = useState(0);
     const [scrollStartPos, setScrollStartpos] = useState(0);
+
+    //Info from the backend and keeping track of checkboxes
+    const [helpRequests, setHelpRequests] = useState([]);
+    const [selectedHelpRequests, setSelectedHelpRequests] = useState({});
+
+    const handleCheckbox = (e) => {
+        setSelectedHelpRequests((prevState) => {
+            return {
+                ...prevState,
+                [e.target.value]: e.target.checked,
+            };
+        });
+        console.log(selectedHelpRequests);
+    };
+
+    const handleMarkAsDone = (e) => {
+        const request_ids = [];
+        for (const key in selectedHelpRequests) {
+            if (selectedHelpRequests[key] === true) {
+                request_ids.push(key);
+            }
+        }
+        if (request_ids.length != 0) {
+            axios
+                .put("http://localhost:4000/api/help_requests", {
+                    request_ids: request_ids,
+                })
+                .then((resp) => {
+                    console.log(resp.data);
+                    updateGetAllHelpRequests();
+                })
+                .catch((err) => console.log(err));
+        }
+    };
+
+    const updateGetAllHelpRequests = () => {
+        console.log(helpRequests ? true : false);
+        axios
+            .get("http://localhost:4000/api/help_requests")
+            .then((resp) => {
+                console.log(resp.data);
+                setHelpRequests(resp.data);
+            })
+            .catch((err) => console.log(err));
+    };
 
     const handleMouseDown = useCallback((e) => {
         e.preventDefault();
@@ -66,21 +112,24 @@ export default function HelpRequests() {
             setScrollPosition(content.current.scrollTop / scrollHeight);
         }
     };
-    useEffect(() => {
-        if (scrollbar.current && content.current && thumbHeight == 0) {
-            console.log(content.current.clientHeight);
-            setThumbHeight(
-                Math.round(
-                    (scrollbar.current.clientHeight /
-                        content.current.scrollHeight) *
-                        600
-                )
-            );
-            if (content.current.clientHeight >= content.current.scrollHeight) {
-                setScollBarVisible(false);
-            }
+    const resizeScrollBar = () => {
+        setThumbHeight(
+            Math.round(
+                (scrollbar.current.clientHeight /
+                    content.current.scrollHeight) *
+                    600
+            )
+        );
+        if (content.current.clientHeight >= content.current.scrollHeight) {
+            setScollBarVisible(false);
         }
-    }, [content]);
+    };
+
+    useEffect(() => {
+        if (scrollbar.current && content.current) {
+            resizeScrollBar();
+        }
+    }, [helpRequests]);
 
     useEffect(() => {
         if (scrollbar.current && content.current) {
@@ -90,6 +139,11 @@ export default function HelpRequests() {
             );
         }
     }, [scrollPosition]);
+
+    useEffect(() => {
+        console.log("Load help requests");
+        updateGetAllHelpRequests();
+    }, []);
 
     return (
         <div className={styles.helpBody}>
@@ -104,26 +158,38 @@ export default function HelpRequests() {
                                 <i class="fa-solid fa-reply"></i>
                                 REPLY
                             </button>
-                            <button>MARK AS DONE</button>
+                            <button onClick={handleMarkAsDone}>
+                                MARK AS DONE
+                            </button>
                         </div>
 
-                        <div
-                            className={styles.notifications}
-                            ref={content}
-                            onScroll={handleScroll}
-                        >
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                            <HelpNotification />
-                        </div>
+                        {helpRequests.length != 0 ? (
+                            <div
+                                className={styles.notifications}
+                                ref={content}
+                                onScroll={handleScroll}
+                            >
+                                {helpRequests.map(
+                                    ({
+                                        request_id,
+                                        name,
+                                        profile_pic,
+                                        date_created,
+                                    }) => {
+                                        return (
+                                            <HelpNotification
+                                                key={request_id}
+                                                id={request_id}
+                                                name={name}
+                                                icon={profile_pic}
+                                                datetime={date_created}
+                                                handleCheckbox={handleCheckbox}
+                                            />
+                                        );
+                                    }
+                                )}
+                            </div>
+                        ) : null}
                     </div>
                     {scrollBarVisible ? (
                         <div className={styles.scrollbar_wrapper}>
