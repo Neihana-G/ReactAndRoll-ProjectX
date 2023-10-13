@@ -15,6 +15,7 @@ export default function ProjectLibrary() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  //
   const [projects, setProjects] = useState();
   useEffect(function () {
     fetch("http://localhost:4000/api/projects")
