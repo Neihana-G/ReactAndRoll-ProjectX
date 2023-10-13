@@ -15,6 +15,7 @@ export default function ProjectLibrary() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  //
   const [projects, setProjects] = useState();
   useEffect(function () {
     fetch("http://localhost:4000/api/projects")
@@ -42,7 +43,7 @@ export default function ProjectLibrary() {
       setFilteredProjects(projects);
     } else {
       const filteredActivity = projects.filter(
-        (item) => item.category === selectedActivity
+        (item) => item.animation === selectedActivity
       );
       setFilteredProjects(filteredActivity);
     }

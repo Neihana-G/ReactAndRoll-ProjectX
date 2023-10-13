@@ -1,0 +1,26 @@
+.studentCard {
+  display: flex;
+  width: 190px;
+  height: 190px;
+  background-color: white;
+  border-radius: 30px;
+
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.studentProfileWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.studentPhoto {
+  width: 115px;
+  height: 115px;
+}
