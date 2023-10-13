@@ -42,7 +42,7 @@ export default function ProjectLibrary() {
       setFilteredProjects(projects);
     } else {
       const filteredActivity = projects.filter(
-        (item) => item.category === selectedActivity
+        (item) => item.animation === selectedActivity
       );
       setFilteredProjects(filteredActivity);
     }
