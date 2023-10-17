@@ -56,6 +56,7 @@ export default function ProgressTracker() {
               onScroll={handleScroll}
             >
               <StudentProgress />
+              {/* <StudentProgress />
               <StudentProgress />
               <StudentProgress />
               <StudentProgress />
@@ -64,8 +65,7 @@ export default function ProgressTracker() {
               <StudentProgress />
               <StudentProgress />
               <StudentProgress />
-              <StudentProgress />
-              <StudentProgress />
+              <StudentProgress /> */}
             </div>
 
             <div className={styles.scrollbar_wrapper}>

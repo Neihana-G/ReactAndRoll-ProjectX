@@ -7,6 +7,7 @@
   margin: 20px 0px 75px 40px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   /* justify-content: space-between; */
 }
 .notificationBody {
@@ -17,8 +18,7 @@
   border-radius: 15px;
   display: flex;
   align-items: left;
-  /* justify-content: center; */
-  /* margin-top: 50px; */
+  margin-top: 30px;
   flex-direction: column;
   position: relative;
 }
@@ -28,7 +28,7 @@
   text-align: left;
   flex-grow: 1;
   font-size: 22px;
-  color: #6c6c6c;
+  color: #571515;
   /* margin: 5px 0; */
   margin-top: 35px;
   margin-left: 60px;

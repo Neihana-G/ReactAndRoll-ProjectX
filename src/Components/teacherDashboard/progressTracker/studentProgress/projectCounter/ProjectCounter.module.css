@@ -26,3 +26,7 @@
   color: #6c6c6c;
   /* font-family: "Nunito", sans-serif !important; */
 }
+
+.completed {
+  background-color: #f5c21a; /* Change color for completed projects */
+}
