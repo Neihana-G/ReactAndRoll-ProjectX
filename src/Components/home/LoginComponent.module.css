@@ -6,15 +6,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 6%;
+    padding-top: 20px;
 }
 .container img {
-    max-width: 50%;
+    max-height: 20vh;
 }
 .container h2 {
     font-family: "Nunito";
-    font-size: 43px;
+    font-size: 40px;
     color: #707070;
+    margin: 0;
 }
 .container form {
     width: 60%;
@@ -23,19 +24,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    /* flex-grow: 1; */
 }
-.container form input {
+.container form label{
     width: 95%;
-    height: 8%;
+    margin: 10px;
+    
+}
+.container form input{
     border: 1px solid #a29f9f;
-    color: #a29f9f;
-    border-radius: 10px;
+    color: black;
+    border-radius: 5px;
     font-family: "Open Sans", "sans-serif";
     font-weight: 500;
-    padding: 0 20px;
+    padding: 0 10px;
+    height: 30px;
 
-    margin: 20px;
+   
 }
+
 .formOptions {
     display: flex;
     width: 100%;
@@ -43,7 +50,7 @@
 }
 .formOptions p {
     font-family: "Nunito";
-    font-size: 24px;
+    font-size: 20px;
     color: #a5a5a5;
 }
 .formOptions p:hover {
@@ -52,4 +59,10 @@
 .currentOption {
     color: #707070 !important;
     border-bottom: 5px solid #f91c85;
+}
+.successMessage{
+    color: rgb(27, 175, 27);
+}
+.errorMessage{
+    color: rgb(199, 28, 28);
 }

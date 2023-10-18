@@ -7,11 +7,19 @@ export default function HomePageButtons({
     style,
     width = "20%",
 }) {
+    const handleButton = (e) => {
+        e.preventDefault()
+        console.log('testing')
+        if(action){
+            action();
+        }
+        
+    }
     return (
         <button
             style={{ width: `${width}` }}
             className={style === "fill" ? styles.fillBtn : styles.outlineBtn}
-            onclick={action && action}
+            onclick={(e) => handleButton(e)}
         >
             {text}
         </button>

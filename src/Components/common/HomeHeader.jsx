@@ -14,7 +14,7 @@ export default function HomeHeader(props) {
             <div className={styles.navlinks}>
                 <NavLink>Home</NavLink>
                 <NavLink>Projects</NavLink>
-                <NavLink>Teachers</NavLink>
+                <NavLink to='/teacher-dashboard'>Teachers</NavLink>
             </div>
             <div className={styles.loginContainer}>
                 <div>
