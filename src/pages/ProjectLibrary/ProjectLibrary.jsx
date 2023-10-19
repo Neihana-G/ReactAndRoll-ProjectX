@@ -1,6 +1,6 @@
 import styles from "./ProjectLibrary.module.css";
-import BlueNavBar from "../../Components/common/BlueNavBar";
-import Footer from "../../Components/common/BlueBigFooter";
+import BlueNavBar from "../../Components/common/HomeHeader";
+import Footer from "../../Components/common/BlueSmallFooter";
 import React, { useState, useEffect, useRef } from "react";
 
 export default function ProjectLibrary() {
