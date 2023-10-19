@@ -22,6 +22,8 @@ export default function BlueNavBar() {
     navigate("/teacher-dashboard");
   };
 
+  const dropdown = document.querySelectorAll(".dropd");
+
   return (
     <div className={styles.body}>
       <div className={styles.navbar}>
@@ -46,7 +48,14 @@ export default function BlueNavBar() {
           </div>
           <div className={styles.student}>
             <img src={avatar} className={styles.profilePic}></img>
-            <p className={styles.studentName}>RAWIRI FLETCHER</p>
+            <div className={styles.studentName}>
+              RAWIRI FLETCHER
+              <ul>
+                <li>My Profile</li>
+                <li>Settings</li>
+                <li>Logout</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
