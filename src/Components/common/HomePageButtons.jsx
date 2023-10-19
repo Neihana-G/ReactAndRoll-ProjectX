@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./HomePageButtons.module.css";
+import { useEffect } from "react";
 
 export default function HomePageButtons({
     text,
-    action,
+    btnAction,
     style,
     width = "20%",
 }) {
@@ -11,7 +12,7 @@ export default function HomePageButtons({
         <button
             style={{ width: `${width}` }}
             className={style === "fill" ? styles.fillBtn : styles.outlineBtn}
-            onclick={action && action}
+            onClick={btnAction}
         >
             {text}
         </button>
