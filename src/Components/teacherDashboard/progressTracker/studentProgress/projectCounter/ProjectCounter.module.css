@@ -3,15 +3,15 @@
 .projectCounter {
   display: flex;
   position: absolute;
-  right: 98px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  flex-shrink: 1;
+  /* flex-shrink: 1; */
 }
 
 .numbers {
-  width: 35px;
-  height: 35px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   box-shadow: 0px 3px 6px #00000040;
   border: solid 0.5px;
@@ -28,5 +28,23 @@
 }
 
 .completed {
-  background-color: #f5c21a; /* Change color for completed projects */
+  background-color: #99edcc; /* Change color for completed projects */
+}
+
+/* ======= MEDIA QUERY  ============*/
+/* Media Query for Smaller Screens */
+@media screen and (max-width: 768px) {
+  .projectCounter {
+    /* Adjust the styling for smaller screens */
+    right: 5px;
+    top: 5px;
+  }
+
+  .numbers {
+    width: 30px;
+    height: 30px;
+    font-size: 14px; /* Adjust font size for smaller screens */
+    margin-right: 5px;
+    margin-left: 5px;
+  }
 }
