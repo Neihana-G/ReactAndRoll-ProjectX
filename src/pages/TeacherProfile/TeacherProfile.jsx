@@ -41,13 +41,13 @@ export default function TeacherProfile() {
     };
     const handleSaveInfo = async () => {
         const updateData = {};
-        if (school !== userData?.school && school != "") {
+        if (school !== userData?.school && school !== "") {
             updateData.school = school;
         }
-        if (email !== userData?.email && email != "") {
+        if (email !== userData?.email && email !== "") {
             updateData.email = email;
         }
-        if (contactNo !== userData?.contact_number && contactNo != "") {
+        if (contactNo !== userData?.contact_number && contactNo !== "") {
             updateData.contact_number = contactNo;
         }
         if (DOB != moment(userData?.date_of_birth).format("YYYY-MM-DD")) {

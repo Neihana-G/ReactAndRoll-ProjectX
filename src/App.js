@@ -3,7 +3,7 @@ import TeacherDashboard from "./pages/TeacherDashboard/TeacherDashboard";
 import HelpRequests from "./Components/teacherDashboard/helpRequests/HelpRequests";
 import TeacherProfile from "./pages/TeacherProfile/TeacherProfile";
 import ProgressTracker from "./Components/teacherDashboard/progressTracker/ProgressTracker";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Library from "./pages/ProjectLibrary/ProjectLibrary";
 import Profiles from "./pages/StudentProfileViewer/StudentProfileViewer";
@@ -12,7 +12,6 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 // import LogInModal from "./Components/home/LogInModal";
 
 function App() {
-    const Navigate = useNavigate();
     return (
         <div className="App">
             <Routes>
@@ -44,7 +43,9 @@ function App() {
                 </Route>
 
                 <Route path="/project-library" element={<Library />}></Route>
+
                 <Route path="/student-profile" element={<Profiles />}></Route>
+
                 <Route exact element={<ProtectedRoute />}>
                     <Route
                         path="/teacher-profile"
