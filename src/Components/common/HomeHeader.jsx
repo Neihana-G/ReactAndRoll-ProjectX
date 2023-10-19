@@ -1,37 +1,81 @@
 import styles from "./HomeHeader.module.css";
 import logo from "../../assets/NavBar/LevelUpWorks-white.png";
 import defaultAvatar from "../../assets/NavBar/Avatar-white.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import nzFLag from "../../assets/NavBar/NZFlag.png";
 import maoriFlag from "../../assets/NavBar/MaoriFlag.png";
+import { useAuth } from "../../auth/useAuth";
+import { useState, useEffect } from "react";
 
 export default function HomeHeader(props) {
+    const [showLogout, setShowLogout] = useState(false);
+    const { authed, userData, logout } = useAuth();
+    const Navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(userData);
+    }, []);
+
     return (
         <div className={styles.homeHeader}>
             <div className={styles.container}>
-                <img src={logo} alt="home-logo" />
+                <img
+                    className={styles.homeImg}
+                    onClick={() => {
+                        Navigate("/");
+                    }}
+                    src={logo}
+                    alt="home-logo"
+                />
             </div>
             <div className={styles.navlinks}>
-                <NavLink>Home</NavLink>
+                <NavLink to="/">Home</NavLink>
                 <NavLink>Projects</NavLink>
-                <NavLink>Teachers</NavLink>
+                <NavLink to="/teacher-dashboard/progress-tracker">
+                    Teachers
+                </NavLink>
             </div>
-            <div className={styles.loginContainer}>
+            <div
+                className={styles.loginContainer}
+                onMouseLeave={() => {
+                    setShowLogout(false);
+                }}
+            >
                 <div>
                     <p style={{ fontSize: "11px" }}>LANG</p>
                     <img src={nzFLag} alt="NZ-Flag" />
                     <img src={maoriFlag} alt="NZ-Flag" />
                 </div>
                 <div className={styles.profileAction}>
-                    {props.signedIn ? (
+                    {authed != "" ? (
                         <>
                             <img
-                                src="/images/teachers/JasminaSalvador.png"
+                                style={{ borderRadius: "50%" }}
+                                src={
+                                    userData?.profile_pic ||
+                                    "/images/default.png"
+                                }
                                 alt="profile"
                             />
-                            <p onClick={props.profileFunction}>
-                                {props.teacherName}
+                            <p
+                                onMouseEnter={() => {
+                                    setShowLogout(true);
+                                }}
+                                onClick={() => {
+                                    Navigate(
+                                        authed === "teacher"
+                                            ? "/teacher-profile"
+                                            : "/student-profile"
+                                    );
+                                }}
+                            >
+                                {userData?.name?.toUpperCase()}
                             </p>
+                            {showLogout && (
+                                <div className={styles.logout}>
+                                    <p onClick={logout}>Logout</p>
+                                </div>
+                            )}
                         </>
                     ) : (
                         <>

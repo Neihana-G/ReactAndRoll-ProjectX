@@ -12,6 +12,7 @@
 .mainSection {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .rightSection {
@@ -26,7 +27,7 @@
   font-family: "Open Sans", sans-serif;
   margin-left: 180px;
   margin-top: 148px;
-  width: 135px;
+  width: 15%;
   min-height: 400px;
 }
 
@@ -119,7 +120,8 @@ hr {
 }
 
 .projectImages {
-  height: 1000px;
+  max-height: 1000px;
+  min-height: 500px;
   width: 80%;
   display: flex;
   flex-wrap: wrap;

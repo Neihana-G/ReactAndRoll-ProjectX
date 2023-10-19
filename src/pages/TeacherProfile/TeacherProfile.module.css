@@ -5,17 +5,20 @@
     justify-content: center;
 }
 .mainContent {
-    width: 55%;
-    height: 80vh;
+    width: 65%;
+    height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 .teacherInfo {
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
+    margin-top: 15vh;
+    margin-bottom: 200px;
+    align-items: flex-start;
 }
 .infoType {
     color: grey;
@@ -24,33 +27,62 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 45vw;
     background-color: #ffffff;
     border-radius: 15px;
-    padding: 40px;
+    padding: 40px 100px;
     max-height: 80%;
 }
 .profileDisplayRight h2 {
-    font-size: 40px;
+    text-transform: capitalize;
+    font-size: 2vw;
     color: #707070;
+    font-family: "Nunito", sans-serif;
 }
-.profileDisplayRight div {
+.infoContainer {
+    width: 100%;
     display: flex;
-    width: 90%;
-    justify-content: center;
-    text-align: left;
+    justify-content: flex-start;
+    align-items: center;
 }
-.profileDisplayRight div p {
-    width: 40%;
+
+.infoContainer div {
+    min-width: 18vw;
+    width: auto;
     text-align: left;
-    padding-left: 10%;
-    font-size: 25px;
+    font-size: 1.3vw;
     font-weight: 600;
     color: #707070;
 }
+.editInput {
+    margin: 0;
+    float: right;
+    font-size: 1.3vw;
+    font-weight: 600;
+    height: 1.4vw;
+    width: 120%;
+    color: #707070;
+    border: none;
+    border-bottom: #707070 2px solid;
+}
+.editInput:focus {
+    outline: none;
+    /* border: #707070 10px solid; */
+}
+.infoContainer div p {
+    text-transform: capitalize;
+    /* padding-left: 2vw; */
+    padding-right: 20px;
+}
+.info {
+    text-align: right;
+    float: right;
+    /* background-color: #f91c85; */
+}
 .profileDisplayLeft {
-    width: 30%;
-    height: 60%;
+    width: auto;
+    height: auto;
+    padding: 40px;
     background-color: #fff;
     border-radius: 15px;
     display: flex;
@@ -59,6 +91,7 @@
     justify-content: center;
 }
 .profileDisplayLeft img {
+    max-width: 7vw;
     margin: 20px;
 }
 .profileDisplayLeft button {
@@ -66,7 +99,11 @@
     border-radius: 3px;
     background: white;
     padding: 5px 10px;
-    width: 40%;
+    font-size: 0.7vw;
+    font-weight: 700;
+    width: 90%;
+    min-width: auto;
+    font-family: "Nunito", sans-serif;
     margin: 10px 0;
     text-transform: uppercase;
     color: #43c0f6;
@@ -79,19 +116,30 @@
     box-shadow: 2px 4px 10px 0 #3d93b8;
     transition-duration: 0.3s;
 }
+.rightCont {
+    position: relative;
+}
 .backButtons {
-    align-self: flex-end;
+    position: absolute;
+    margin-top: 50px;
+    right: 0;
 }
 .backButtons button {
     margin: 00px 0 30px 30px;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
+
     color: white;
     background-color: #f91c85;
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
+}
+.backButtons button a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.7vw;
+    text-transform: uppercase;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
 }
 .backButtons button:hover {
     cursor: pointer;

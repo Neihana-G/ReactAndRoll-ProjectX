@@ -6,10 +6,13 @@
     align-items: center;
     justify-content: flex-end;
 }
-.header img {
+.headerImage {
     max-height: 100%;
     margin-right: auto;
-    padding: 50px;
+    padding-left: 50px;
+}
+.headerImage:hover {
+    cursor: pointer;
 }
 .buttonWrapper {
     height: 35px;
