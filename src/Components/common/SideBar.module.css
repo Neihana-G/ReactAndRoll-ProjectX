@@ -3,7 +3,7 @@
     background-color: #43c0f6;
     /* Currently 100vh as default */
     width: 350px;
-    height: 100vh;
+    min-height: 90vh;
     /* width: auto; */
     display: flex;
     flex-direction: column;
@@ -11,7 +11,15 @@
 }
 /* Placeholder for the icon image at top of sidebar */
 .icon {
-    height: 10vh;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon img {
+    border-radius: 50%;
+    max-width: 70%;
+    max-height: 60%;
 }
 .btn {
     background: none;
@@ -30,7 +38,7 @@
 
 .sideBarImages {
     padding: 0px 10px;
-    width: 50px;
+    width: 5.5vh;
 }
 .main {
     display: flex;
@@ -40,22 +48,36 @@
     background-color: #b2e4fa;
     color: #707070;
 }
-.openCloseBtn {
+.openClose {
+    margin-top: 3vh;
+    width: 100%;
+    display: flex;
+}
+.openParent {
+    justify-content: flex-end;
+}
+
+.easyBtn:hover {
+    cursor: pointer;
+}
+.easyBtn {
+    width: 8vh;
+    height: 8vh;
+    border-radius: 10px 0px 0px 10px;
     background-color: #b2e4fa;
     background-image: url("../../assets/arrowLeft.png");
+    background-size: 20%;
     background-position: center;
     background-repeat: no-repeat;
-    width: 64px;
-    height: 72px;
-    position: absolute;
-    top: 40%;
-    bottom: 0;
-    right: 0;
-    border-radius: 10px 0px 0px 10px;
-    z-index: 10;
 }
-.openCloseBtn:hover {
-    cursor: pointer;
+.close {
+    justify-self: flex-start;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }
 .bottomOfSidebar {
     position: relative;
@@ -66,14 +88,12 @@
 }
 .sidebarBottomActions {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     color: white;
-    position: absolute;
-    bottom: 20px;
     width: 70%;
 }
 .sidebarBottomActions h6 {
-    margin: 5px;
+    margin: 5px 10px;
     padding: 0;
 }
 .sidebarBottomActions div {
@@ -98,27 +118,25 @@
     justify-content: center;
 }
 .btnClosed img {
-    width: 100px;
-    height: 50px;
+    width: 7vh;
+    /* height: 50px; */
 }
 
-.openCloseBtnClosed {
-    right: 100%;
-    left: 0;
-    /* Just flips the div horizontally to appear on other side */
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-}
 .sidebarBottomActionsClosed {
     flex-direction: column;
+    justify-content: flex-end;
+}
+
+.sidebarBottomActionsClosed h6 {
+    margin: 5px 0;
 }
 .sidebarBottomActionsClosed div {
     padding: 10px;
 }
 .sidebarBottomActionsClosed div img {
     width: 20%;
+}
+.sidebarBottomActionsClosed div:hover,
+.sidebarBottomActions div:hover {
+    cursor: pointer;
 }

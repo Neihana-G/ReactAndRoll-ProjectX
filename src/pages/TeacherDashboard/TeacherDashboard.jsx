@@ -13,6 +13,7 @@ import submissionsImgsSelected from "../../assets/TeacherDashboard/projectSubmis
 import projectLibraryImg from "../../assets/TeacherDashboard/projectLibrary.png";
 import projectLibraryImgSelected from "../../assets/TeacherDashboard/projectLibrarySelected.png";
 import Footer from "../../Components/common/Footer";
+import { useEffect } from "react";
 
 export default function TeacherDashboard() {
     const sidebarPaths = [

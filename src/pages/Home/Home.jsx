@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import HomeHeader from "../../Components/common/HomeHeader";
 import HomePageButtons from "../../Components/common/HomePageButtons";
@@ -13,8 +14,14 @@ import img4 from "../../assets/Home/animation.png";
 
 export default function Home() {
     const [loginModalOpen, setLoginModalOpen] = useState(false);
+    const Navigate = useNavigate();
 
     const handleModalOpenClose = () => {
+        // if(loginModalOpen){
+        //     Navigate('/')
+        // }else{
+        //     Navigate('/login')
+        // }
         setLoginModalOpen(!loginModalOpen);
     };
 
@@ -29,6 +36,7 @@ export default function Home() {
     return (
         <>
             {loginModalOpen && <LogInModal close={handleModalOpenClose} />}
+            {/* {loginModalOpen && <Outlet/>} */}
             <div>
                 <HomeHeader
                     signedIn={false}
@@ -55,6 +63,7 @@ export default function Home() {
                                 style="fill"
                                 text="SIGN UP"
                                 width={"25%"}
+                                btnAction={handleModalOpenClose}
                             />
                         </div>
                     </div>
