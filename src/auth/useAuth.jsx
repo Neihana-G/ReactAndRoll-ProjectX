@@ -5,17 +5,20 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
+    // ------ CONSTANTS -------- //
     const [authed, setAuthed] = useState("");
     const [loadingState, setLoading] = useState(true);
     const [userData, setUserData] = useState({});
     const Navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
+    // -----ON PAGE LOAD, check if user is logged in and get user data
     useEffect(() => {
         setLoading(true);
         getUserData();
     }, []);
 
+    // Passes through the JWT token to check if user is logged in and who the user is
     const getUserData = () => {
         axios
             .get("http://localhost:4000/api/load-user", {
@@ -41,6 +44,7 @@ export const AuthProvider = ({ children }) => {
             });
     };
 
+    //Login function
     const login = async (endpoint, email, password, errorFunction) => {
         console.log("login");
         setLoading(true);
@@ -88,21 +92,6 @@ export const AuthProvider = ({ children }) => {
         // setUserData({});
         Navigate("/");
     };
-
-    // const getUserData = async () => {
-    //         axios
-    //         .get("http://localhost:4000/api/loadUser", {
-    //             headers: {
-    //                 "x-access-token": localStorage.getItem("token"),
-    //             },
-    //         })
-    //         .then((res) => {
-    //             if (res.status === 200) {
-    //                 setUserData(res.data[0]);
-    //             }
-    //         })
-    //         .catch((err) => console.log(err));
-    // }
 
     return (
         <AuthContext.Provider
