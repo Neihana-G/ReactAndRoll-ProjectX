@@ -43,21 +43,21 @@ export default function ProjectLibrary() {
   const handleSubscription = (subscription) => {
     setSelectedSubscription(
       (
-        prev //prev represents the previous state of the selectedSubscription array
+        previousState //previous represents the previous state of the selectedSubscription array
       ) =>
-        prev.includes(subscription) //checks if the previous state already has the clicked subscription
-          ? prev.filter((item) => item !== subscription) //if it is in there, then the code is recognising that the user is deselecting
+        previousState.includes(subscription) //checks if the previous state already has the clicked subscription
+          ? previousState.filter((item) => item !== subscription) //if it is in there, then the code is recognising that the user is deselecting
           : //and removes from the list as filter creates a new array
-            [...prev, subscription] //if it isn't there, the code is recognising that the user is checking the checkbox
+            [...previousState, subscription] //if it isn't there, the code is recognising that the user is checking the checkbox
       //creates a new array that has previous state + selected subscription
     );
   }; //the result is passed to setSelectedSubscription
 
   const handleActivity = (activity) => {
-    setSelectedActivity((prev) =>
-      prev.includes(activity)
-        ? prev.filter((item) => item !== activity)
-        : [...prev, activity]
+    setSelectedActivity((previousState) =>
+      previousState.includes(activity)
+        ? previousState.filter((item) => item !== activity)
+        : [...previousState, activity]
     );
   };
 
@@ -66,18 +66,18 @@ export default function ProjectLibrary() {
   }; //updates selectedDifficulty with the value of the clicked difficulty
 
   const handleLevel = (range) => {
-    setSelectedLevel((prev) =>
-      prev.includes(range)
-        ? prev.filter((item) => item !== range)
-        : [...prev, range]
+    setSelectedLevel((previousState) =>
+      previousState.includes(range)
+        ? previousState.filter((item) => item !== range)
+        : [...previousState, range]
     );
   };
 
   const handleSubject = (subject) => {
-    setSelectedSubject((prev) =>
-      prev.includes(subject)
-        ? prev.filter((item) => item !== subject)
-        : [...prev, subject]
+    setSelectedSubject((previousState) =>
+      previousState.includes(subject)
+        ? previousState.filter((item) => item !== subject)
+        : [...previousState, subject]
     );
   };
 
@@ -160,14 +160,25 @@ export default function ProjectLibrary() {
   }, []);
 
   useEffect(() => {
+    //Calling filterProjects to filter the projects based on the selected filters and then sets it to the result
     setFilteredProjects(filterProjects());
+    // After updating filteredProjects, ensure that the correct page is selected based on the filtered count
+    const filteredCount = filteredProjects.length; //how many projects that passed the applied filters
+
+    if (filteredCount <= 5) {
+      handlePageClick(0); // Show "5" projects
+    } else if (filteredCount <= 10) {
+      handlePageClick(1); // Show "10" projects
+    } else {
+      handlePageClick(2); // Show "All" projects
+    }
   }, [
     selectedDifficulty,
     selectedSubscription,
     selectedActivity,
     selectedLevel,
     selectedSubject,
-  ]); //if any of these change, the useEffect will run again leading to update of filteredProjects
+  ]);
 
   // JSX Structure
 
