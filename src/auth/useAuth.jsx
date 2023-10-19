@@ -5,14 +5,18 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [authed, setAuthed] = useState('');
-    const [loadingState, setLoading] = useState(false);
-    const [userData, setUserData] = useState({})
+    const [authed, setAuthed] = useState("");
+    const [loadingState, setLoading] = useState(true);
+    const [userData, setUserData] = useState({});
     const Navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
         setLoading(true);
+        getUserData();
+    }, []);
+
+    const getUserData = () => {
         axios
             .get("http://localhost:4000/api/load-user", {
                 headers: {
@@ -21,24 +25,24 @@ export const AuthProvider = ({ children }) => {
             })
             .then((res) => {
                 console.log(res);
-                setLoading(false);
                 if (res.status === 200) {
-                    setAuthed(true);
-                    // getUserData()
+                    setAuthed(res.data.userState);
+                    setUserData(res.data.result[0]);
                 } else {
-                    setAuthed(false);
+                    setAuthed("");
                 }
+                setLoading(false);
             })
             .catch((err) => {
                 setLoading(false);
-                setAuthed(false);
+                setAuthed("");
+                setUserData({});
                 console.log(err);
             });
-    }, []);
+    };
 
-    const login = async (endpoint, email, password) => {
-
-        console.log('login')
+    const login = async (endpoint, email, password, errorFunction) => {
+        console.log("login");
         setLoading(true);
         axios
             .post(`http://localhost:4000/api/${endpoint}`, {
@@ -52,29 +56,36 @@ export const AuthProvider = ({ children }) => {
                     setAuthed(res.data.userState);
                     setLoading(false);
                     localStorage.setItem("token", res.data.token);
-                    if(res.data.userState === 'teacher'){
-                        Navigate('/teacher-dashboard/progress-tracker')
-                    }else{
-                        Navigate('/student-profile')
+                    document.body.style.overflowY = "scroll";
+                    if (res.data.userState === "teacher") {
+                        Navigate("/teacher-dashboard/progress-tracker");
+                    } else {
+                        Navigate("/student-profile");
                     }
-                    
-                    console.log("Logged in successfully");
+                    getUserData();
+                    return true;
+                    // console.log("Logged in successfully");
                 } else {
                     setAuthed(false);
                     setLoading(false);
-                    console.log("error loggin in");
+                    return { message: "Unexpected error loggin in" };
+                    // console.log("error logging in");
                 }
             })
             .catch((err) => {
                 setLoading(false);
                 setAuthed(false);
                 console.log(err);
+                errorFunction(err.response.data.message);
+                return { message: err.response.data.message };
+                // console.log(err);
             });
     };
     const logout = async () => {
         localStorage.removeItem("token");
         setAuthed(false);
         setLoading(false);
+        // setUserData({});
         Navigate("/");
     };
 
@@ -95,7 +106,15 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ authed, setAuthed, login, logout, loadingState, userData }}
+            value={{
+                authed,
+                setAuthed,
+                login,
+                logout,
+                loadingState,
+                userData,
+                getUserData,
+            }}
         >
             {children}
         </AuthContext.Provider>

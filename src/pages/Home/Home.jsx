@@ -23,7 +23,6 @@ export default function Home() {
         //     Navigate('/login')
         // }
         setLoginModalOpen(!loginModalOpen);
-        
     };
 
     useEffect(() => {
@@ -64,6 +63,7 @@ export default function Home() {
                                 style="fill"
                                 text="SIGN UP"
                                 width={"25%"}
+                                btnAction={handleModalOpenClose}
                             />
                         </div>
                     </div>

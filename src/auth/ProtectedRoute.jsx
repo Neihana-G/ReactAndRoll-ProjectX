@@ -5,10 +5,14 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     const { authed, loadingState } = useAuth();
 
     if (loadingState) {
-        return '';
+        return "";
+    } else {
+        return authed === "teacher" ? (
+            <Outlet />
+        ) : (
+            <Navigate to="/" replace={true} />
+        );
     }
-
-    return authed === 'teacher'  ? <Outlet /> : <Navigate to="/" replace={true} />;
 };
 
 export default ProtectedRoute;
