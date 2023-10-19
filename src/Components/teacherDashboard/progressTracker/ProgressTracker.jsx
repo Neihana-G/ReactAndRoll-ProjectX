@@ -1,6 +1,8 @@
 import styles from "./ProgressTracker.module.css";
 import StudentProgress from "./studentProgress/StudentProgress";
 import React, { useState, useEffect, useRef } from "react";
+import { faFileExport } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ProgressTracker() {
   const [contentHeight, setContentHeight] = useState(0);
@@ -45,8 +47,13 @@ export default function ProgressTracker() {
             <div className={styles.actionButtons}>
               <h3>BEGINNER COURSE</h3>
               <button>
-                {/* <i class="fa-regular fa-file-export"></i> */}
-                EXPORT AS SPREADSHEET
+                <FontAwesomeIcon
+                  icon={faFileExport}
+                  style={{ color: "#6c6c6c" }}
+                />
+                <span className={styles.exportSpreadsheet}>
+                  EXPORT AS SPREADSHEET
+                </span>
               </button>
             </div>
 
@@ -56,6 +63,7 @@ export default function ProgressTracker() {
               onScroll={handleScroll}
             >
               <StudentProgress />
+              {/* <StudentProgress />
               <StudentProgress />
               <StudentProgress />
               <StudentProgress />
@@ -64,8 +72,7 @@ export default function ProgressTracker() {
               <StudentProgress />
               <StudentProgress />
               <StudentProgress />
-              <StudentProgress />
-              <StudentProgress />
+              <StudentProgress /> */}
             </div>
 
             <div className={styles.scrollbar_wrapper}>
