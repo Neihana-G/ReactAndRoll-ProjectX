@@ -1,64 +1,175 @@
 import styles from "./ProjectLibrary.module.css";
 import BlueNavBar from "../../Components/common/BlueNavBar";
-import Footer from "../../Components/common/Footer";
-
-import { useState, useEffect } from "react";
-import React from "react";
+import Footer from "../../Components/common/BlueBigFooter";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function ProjectLibrary() {
-  const difficulties = ["BEGINNER", "INTERMEDIATE", "ADVANCED"];
+  // ------------------------------ State Variables ------------------------------
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  //currentIndex = currently selected index, starting with index 0
   const [currentPage, setCurrentPage] = useState(0);
+  const [projects, setProjects] = useState([]);
+  const [selectedActivity, setSelectedActivity] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [selectedDifficulty, setSelectedDifficulty] = useState("All");
+  const [selectedSubscription, setSelectedSubscription] = useState([]);
+  const [selectedLevel, setSelectedLevel] = useState([]);
+  const [selectedSubject, setSelectedSubject] = useState([]);
+
+  // ------------------------------ Constants ------------------------------
+
+  const difficulties = ["BEGINNER", "INTERMEDIATE", "ADVANCED"];
   const pages = ["5", "10", "All"];
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const page5Ref = useRef();
+
+  // ------------------------------ Event Handlers ------------------------------
+
+  // When a user clicks one of the page options
+  const handlePageClick = (index) => {
+    setCurrentPage(index); //sets the currently selected page
+
+    if (pages[index] === "All") {
+      //checks if the selected page is "All"
+      //If it is "All", it is displaying all projects
+      //updates 'filterProjects' which is a function that filters based on selected filters
+      setFilteredProjects(filterProjects());
+    } else {
+      const numProjectsToShow = parseInt(pages[index]); //converts the selected page number into integer
+      setFilteredProjects(filterProjects().slice(0, numProjectsToShow));
+      //using flice to extract only the first selected number of projects (that have been filtered)
+    }
   };
 
-  //
-  const [projects, setProjects] = useState();
-  useEffect(function () {
+  const handleSubscription = (subscription) => {
+    setSelectedSubscription(
+      (
+        prev //prev represents the previous state of the selectedSubscription array
+      ) =>
+        prev.includes(subscription) //checks if the previous state already has the clicked subscription
+          ? prev.filter((item) => item !== subscription) //if it is in there, then the code is recognising that the user is deselecting
+          : //and removes from the list as filter creates a new array
+            [...prev, subscription] //if it isn't there, the code is recognising that the user is checking the checkbox
+      //creates a new array that has previous state + selected subscription
+    );
+  }; //the result is passed to setSelectedSubscription
+
+  const handleActivity = (activity) => {
+    setSelectedActivity((prev) =>
+      prev.includes(activity)
+        ? prev.filter((item) => item !== activity)
+        : [...prev, activity]
+    );
+  };
+
+  const handleDifficulty = (difficulty) => {
+    setSelectedDifficulty(difficulty);
+  }; //updates selectedDifficulty with the value of the clicked difficulty
+
+  const handleLevel = (range) => {
+    setSelectedLevel((prev) =>
+      prev.includes(range)
+        ? prev.filter((item) => item !== range)
+        : [...prev, range]
+    );
+  };
+
+  const handleSubject = (subject) => {
+    setSelectedSubject((prev) =>
+      prev.includes(subject)
+        ? prev.filter((item) => item !== subject)
+        : [...prev, subject]
+    );
+  };
+
+  const handleScrollToTop = () => {
+    //window is the browser's object
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    //window.scrollTo scrolls the page to a specific position which is to top
+  };
+
+  // ------------------------------ Filter Function ------------------------------
+
+  const filterProjects = () => {
+    //initialising filteredProjects as the entire list of projects
+    //prevents the projects from being directly modified
+    let filteredProjects = projects;
+
+    if (selectedDifficulty !== "All") {
+      filteredProjects = filteredProjects.filter(
+        (project) => project.difficulty === selectedDifficulty
+      ); //only include projects with the selected difficulty
+    }
+
+    if (
+      //if one or more subscriptions are selected
+      selectedSubscription.length > 0 &&
+      !selectedSubscription.includes("All")
+    ) {
+      filteredProjects = filteredProjects.filter((project) =>
+        selectedSubscription.includes(project.subscription)
+      ); //filters so thay only projects with selected subscription are included in filteredProjects
+    }
+
+    if (selectedActivity.length > 0 && !selectedActivity.includes("All")) {
+      filteredProjects = filteredProjects.filter((project) =>
+        selectedActivity.includes(project.activity_type)
+      );
+    }
+
+    if (selectedLevel.length > 0 && !selectedLevel.includes("All")) {
+      filteredProjects = filteredProjects.filter((project) => {
+        //for loop to iterate over each selected level range to check if the project's year level falls within rage
+        for (const range of selectedLevel) {
+          const [minLevel, maxLevel] = range.split(" - ").map(Number);
+          if (
+            project.year_level >= minLevel &&
+            project.year_level <= maxLevel
+          ) {
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+
+    if (selectedSubject.length > 0 && !selectedSubject.includes("All")) {
+      filteredProjects = filteredProjects.filter((project) =>
+        selectedSubject.includes(project.subject_matter)
+      );
+    }
+    //returns the final filteredProjects after applying the filters
+    return filteredProjects;
+  };
+
+  // ------------------------------ Other filter functions ------------------------------
+
+  useEffect(() => {
     fetch("http://localhost:4000/api/projects")
-      .then((response) => response.json())
+      .then((response) => response.json()) //takes response from fetch request and converts to JSON format
       .then((response) => {
-        console.log(response);
         setProjects(response);
+        //setting projects to JSON response, which is an array of projects
+        setSelectedDifficulty("BEGINNER");
+        //setting default difficulty to Beginner, when page is loaded, already set at beginner
+        handlePageClick(0);
+        //sets the default number of projects shown to 5
+
+        page5Ref.current.click();
+        //triggers a click event on page5ref
       });
   }, []);
 
-  const [selectedActivity, setSelectedActivity] = useState("All");
-  const [filteredProjects, setFilteredProjects] = useState([]);
-  const [selectedDifficulty, setSelectedDifficulty] = useState("All");
-
-  const handleProjects = (project) => {
-    setSelectedActivity(project);
-  };
-
-  const handleDifficulty = (project) => {
-    setSelectedDifficulty(project);
-  };
-
   useEffect(() => {
-    if (selectedActivity === "All") {
-      setFilteredProjects(projects);
-    } else {
-      const filteredActivity = projects.filter(
-        (item) => item.animation === selectedActivity
-      );
-      setFilteredProjects(filteredActivity);
-    }
-  }, [selectedActivity]);
+    setFilteredProjects(filterProjects());
+  }, [
+    selectedDifficulty,
+    selectedSubscription,
+    selectedActivity,
+    selectedLevel,
+    selectedSubject,
+  ]); //if any of these change, the useEffect will run again leading to update of filteredProjects
 
-  useEffect(() => {
-    if (selectedDifficulty === "All") {
-      setFilteredProjects(projects);
-    } else {
-      const filteredDifficulty = projects.filter(
-        (item) => item.year_level === selectedDifficulty
-      );
-      setFilteredProjects(filteredDifficulty);
-    }
-  }, [selectedDifficulty]);
+  // JSX Structure
 
   return (
     <div className={styles.main}>
@@ -69,10 +180,20 @@ export default function ProjectLibrary() {
             <p className={styles.sideHeader}>SUBSCRIPTION</p>
             <hr></hr>
             <div className={styles.checklist}>
-              <input type={"checkbox"} className={styles.checkbox}></input>
+              <input
+                type={"checkbox"}
+                className={styles.checkbox}
+                checked={selectedSubscription.includes("Free")}
+                onChange={() => handleSubscription("Free")}
+              ></input>
               <label className={styles.label}>Free</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedSubscription.includes("Premium")}
+                onClick={() => handleSubscription("Premium")}
+              ></input>
               <label className={styles.label}>Premium</label>
             </div>
             <p className={styles.sideHeader}>ACTIVITY TYPE</p>
@@ -81,69 +202,119 @@ export default function ProjectLibrary() {
               <input
                 type="checkbox"
                 className={styles.checkbox}
-                onClick={() => handleProjects("Animation")}
-                isActive={selectedActivity === "Animation"}
+                checked={selectedActivity.includes("Animation")}
+                onClick={() => handleActivity("Animation")}
               ></input>
               <label className={styles.label}>Animation</label>
               <br />
               <input
                 type="checkbox"
                 className={styles.checkbox}
-                onClick={() => handleProjects("Game")}
-                isActive={selectedActivity === "Game"}
+                checked={selectedActivity.includes("Game")}
+                onClick={() => handleActivity("Game")}
               ></input>
               <label className={styles.label}>Game</label>
               <br />
               <input
                 type="checkbox"
                 className={styles.checkbox}
-                onClick={() => handleProjects("Chatbot")}
-                isActive={selectedActivity === "Chatbot"}
+                checked={selectedActivity.includes("Chatbot")}
+                onClick={() => handleActivity("Chatbot")}
               ></input>
               <label className={styles.label}>Chatbot</label>
               <br />
               <input
                 type="checkbox"
                 className={styles.checkbox}
-                onClick={() => handleProjects("Augmented Reality")}
-                isActive={selectedActivity === "Augmented Reality"}
+                checked={selectedActivity.includes("Augmented Reality")}
+                onClick={() => handleActivity("Augmented Reality")}
               ></input>
               <label className={styles.label}>Augmented Reality</label>
             </div>
             <p className={styles.sideHeader}>YEAR LEVEL</p>
             <hr></hr>
             <div className={styles.checklist}>
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedLevel.includes("1 - 4")}
+                onClick={() => handleLevel("1 - 4")}
+              ></input>
               <label className={styles.label}>1 - 4</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedLevel.includes("5 - 6")}
+                onClick={() => handleLevel("5 - 6")}
+              ></input>
               <label className={styles.label}>5 - 6</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedLevel.includes("7 - 8")}
+                onClick={() => handleLevel("7 - 8")}
+              ></input>
               <label className={styles.label}>7 - 8</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedLevel.includes("9 - 13")}
+                onClick={() => handleLevel("9 - 13")}
+              ></input>
               <label className={styles.label}>9 - 13</label>
             </div>
             <p className={styles.sideHeader}>SUBJECT MATTER</p>
             <hr></hr>
             <div className={styles.checklist}>
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedSubject.includes("Computer Science")}
+                onClick={() => handleSubject("Computer Science")}
+              ></input>
               <label className={styles.label}>Computer Science</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedSubject.includes("Maths")}
+                onClick={() => handleSubject("Maths")}
+              ></input>
               <label className={styles.label}>Maths</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedSubject.includes("Science")}
+                onClick={() => handleSubject("Science")}
+              ></input>
               <label className={styles.label}>Science</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedSubject.includes("Language")}
+                onClick={() => handleSubject("Language")}
+              ></input>
               <label className={styles.label}>Language</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedSubject.includes("Art")}
+                onClick={() => handleSubject("Art")}
+              ></input>
               <label className={styles.label}>Art</label>
               <br />
-              <input type="checkbox" className={styles.checkbox}></input>
+              <input
+                type="checkbox"
+                className={styles.checkbox}
+                checked={selectedSubject.includes("Music")}
+                onClick={() => handleSubject("Music")}
+              ></input>
               <label className={styles.label}>Music</label>
             </div>
           </div>
@@ -183,8 +354,13 @@ export default function ProjectLibrary() {
                 {pages.map((page, index) => {
                   return (
                     <div
+                      ref={index === 0 ? page5Ref : null} // Ref for "5" button
+                      //if index is equal to 0, it sets the ref to page5ref, otherwise sets the ref to null
                       className={styles.control_page}
-                      onClick={() => setCurrentPage(index)}
+                      onClick={() => {
+                        setCurrentPage(index);
+                        handlePageClick(index);
+                      }}
                     >
                       {currentPage === index && (
                         <div className={styles.control_difficulty_bg}></div>
@@ -200,15 +376,13 @@ export default function ProjectLibrary() {
             </div>
             <div className={styles.projectImages}>
               {filteredProjects &&
-                filteredProjects.map(function (project) {
+                filteredProjects.map((project) => {
                   return (
                     <div key={project.id} className={styles.card}>
-                      <img src={project.images} alt="project"></img>
-                      <p className={styles.description}>
-                        {project.description}
-                      </p>
+                      <img src={project.images} alt="project" />
+                      <p className={styles.description}>{project.name}</p>
                       <p className={styles.smallDescription}>
-                        {project.year_level} | {project.animation}
+                        {project.difficulty} | {project.activity_type}
                       </p>
                     </div>
                   );
