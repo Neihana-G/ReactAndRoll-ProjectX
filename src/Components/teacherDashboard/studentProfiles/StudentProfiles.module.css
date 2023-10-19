@@ -65,13 +65,13 @@
   height: 100%;
 }
 .notifications {
-  max-height: 65%;
+  max-height: 100%;
   position: absolute;
   right: 0;
   left: 0;
-  padding-bottom: 170px;
+
   bottom: 0;
-  top: 110px;
+  top: 0px;
   margin: 0;
   overflow-y: scroll;
 }
@@ -79,9 +79,9 @@
   appearance: none;
 }
 .scrollbar_wrapper {
-  height: 95%; /* must have some height */
+  height: 100%; /* must have some height */
   position: absolute;
-  top: 75px;
+  top: 0px;
   right: 20px;
   bottom: 0;
   width: 24px; /* must have some width */
@@ -89,9 +89,9 @@
   align-items: center;
 }
 .scrollbar {
-  height: 90%; /* must have some height */
+  height: 100%; /* must have some height */
   position: relative;
-  top: 2px;
+  top: 0px;
   bottom: 0;
   width: 24px; /* must have some width */
   border-radius: 30px;
