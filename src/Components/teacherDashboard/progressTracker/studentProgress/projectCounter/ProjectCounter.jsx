@@ -19,39 +19,3 @@ export default function ProjectCounter({ completedProjects }) {
   );
 }
 // ================================
-// import { useEffect, useState } from "react";
-// import styles from "./ProjectCounter.module.css";
-
-// const ProjectCounter = () => {
-//   const [users, setUsers] = useState();
-
-//   useEffect(function () {
-//     fetch("http://localhost:4000/api/users")
-//       .then((response) => response.json())
-//       .then((response) => {
-//         console.log(response);
-//         setUsers(response);
-//       });
-//   }, []);
-
-//   return (
-//     <div className={styles.studentProfileWrapper}>
-//       {users &&
-//         users.map(function (user) {
-//           return (
-//             <div className={styles.studentCard}>
-//               <img
-//                 className={styles.studentPhoto}
-//                 src={user.profile_pic}
-//                 alt="Student 1"
-//               />
-//               <h3>{user.name}</h3>
-//             </div>
-//           );
-//         })}
-
-//     </div>
-//   );
-// };
-
-// export default ProjectCounter;

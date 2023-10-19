@@ -113,4 +113,6 @@
   width: 16px; /* must have some width */
 }
 
-/* NEW CSS */
+.exportSpreadsheet {
+  margin-left: 9px;
+}
